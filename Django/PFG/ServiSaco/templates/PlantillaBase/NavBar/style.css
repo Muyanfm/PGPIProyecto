@@ -1,0 +1,70 @@
+
+#ContenedorNavbar *{
+    color: white;
+}
+
+#ContenedorNavbar{
+    width: 100%;
+    display: flex;
+    padding: 5px 0;
+    background: rgb(47, 40, 31);
+    position: fixed;
+    z-index: 10;
+}
+
+#ContenedorLogo img, #ContenedorUsuario img{
+    cursor: pointer;
+}
+
+#ContenedorLogo{
+    width: 20%;
+    min-width: 200px;
+    position: relative;
+}
+
+#ContenedorLogo img{
+    margin-left: 50px;
+    transition: .3s;
+    width: 70px;
+    top: 40%;
+    transform: translateY(-50%);
+    position: absolute;
+}
+
+#ContenedorNavegacion{
+    width: 50%;
+    min-width: 200px;
+}
+
+#ContenedorNavegacion ul li{
+    list-style: none;
+    display: inline;
+    margin-right: 50px;
+}
+
+#ContenedorUsuario{
+    width: 54%;
+    position: relative;
+}
+
+#ContenedorUsuario div{
+    height: 100%;
+    display: flex;
+    position: absolute;
+    right: 0;
+}
+
+#ContenedorUsuario img{
+    border: .5px solid white;
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+}
+
+#ContenedorUsuario *{
+    margin-right: 20px;
+}
+
+#login, #logout{
+    text-decoration: underline;
+}

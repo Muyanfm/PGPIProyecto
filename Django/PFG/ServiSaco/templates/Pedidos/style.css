@@ -1,0 +1,187 @@
+#ContenedorConfiguracion{
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 40px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    transition: .4s;
+}
+
+#ContenedorConfiguracion:hover{
+    border: 1px solid rgba(0,0,0,0);
+    box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.1);
+}
+
+#Configuracion{
+    right: 0;
+    overflow: scroll;
+    height: 300px;
+}
+#Configuracion h3{
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+}
+
+#DiasConfiguracion{
+    margin-top: 40px;
+}
+
+#DiasConConf, #DiasSinConf{
+    margin: 40px 0;
+}
+
+.BotonSelector{
+    cursor: pointer;
+    background: #fff5cc;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin: 0 5px;
+}
+
+.selectorDiaClicked{
+    background: #cdff8c;
+}
+
+.BotonSelector:hover{
+    background: #cdff8c;
+
+}
+
+/* */
+
+
+table{
+    width: 800px;
+    border-collapse: collapse;
+}
+
+table, th, td{
+    border: 1px solid #d1d1d1;
+}
+
+th{
+    padding: 5px;
+    background-color: #d3ff8c;
+    font-size: .9em;
+}
+  
+td{
+    text-align: center;
+    padding: 8px 0;
+    text-transform: uppercase;
+}
+
+tr:nth-child(even){
+    background-color: #e0ffcc;
+}
+
+
+.comboBox{
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+  background: none;
+  font-size: .75em;
+}
+
+td i{
+    margin: 0 2px;
+    cursor: pointer;
+}
+td a{
+    color: black;
+}
+
+i.fa-eye:hover{
+    color: rgb(0, 102, 255);
+}
+i.fa-pencil-alt:hover{
+    color: rgb(145, 255, 0);
+}
+i.fa-trash-alt:hover{
+    color: rgb(224, 56, 56);
+}
+
+#PopUpContainer{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+}
+
+#PopUp{
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 40px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    transition: .4s;
+}
+
+#PopUpBtns{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 40px;
+}
+
+#PopUpBtns a{
+    padding: 10px 35px;
+    background: #9fff8c;
+    border-radius: 5px;
+    color: black;
+    cursor: pointer;
+}
+
+#PopUpBtns a:active{
+    background: #88ff00;
+}
+
+
+#CargarPedidosLabel{
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+    position: absolute;
+    right: 30px;
+    top: 80px;
+    background: #c9ff8b;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#CargarPedidos{
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    display: none;
+}
+
+#ContenedorBtnActualizar{
+    margin-top: 40px;
+    height: 50px;
+}
+
+#ContenedorBtnActualizar a{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #dcff8b;
+}
+
+.nuevosPedidos{
+    background: rgba(0,0,0,0.05) !important;
+}

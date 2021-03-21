@@ -1,0 +1,56 @@
+{% extends "PlantillaBase/base.html" %}
+
+{% block title %}Estado de los Vehiculos{% endblock %}
+
+{% block mi_css_js %}
+
+{% load static %}
+<!-- Mi JavaScript -->
+<script src="{% static 'EstadoVehiculos/javascript.js' %}"></script>
+
+<!-- Mi CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'EstadoVehiculos/style.css' %}">
+
+{% endblock %}
+
+{% block contenido %}
+<div id="ContenedorConfiguracion">
+    
+    <h3>Estado de los Vehiculos</h3>
+    <h4>Hora del sistema: {{ hora }}</h4>
+    <div id="Configuracion">
+
+        <div id="ContenedorEstadoMuelles">
+            <div id="EstadoVehiculos">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Vehiculo</th>
+                            <th>Tipo de Vehículo</th>
+                            <th>Estado del Vehiculo</th>
+                        </tr>
+                    </thead>
+                
+                    <tbody>
+                        {% for vehiculo in vehiculos %}
+                            <tr>
+                            {% for item in vehiculo %}
+                                <td> {{ item }} </td>
+                            {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div> 
+        
+    </div>
+
+</div>
+
+<script>
+    var cantidadVehiculos = "{{ cantVehiculos }}";
+</script>
+
+{% endblock %}
+

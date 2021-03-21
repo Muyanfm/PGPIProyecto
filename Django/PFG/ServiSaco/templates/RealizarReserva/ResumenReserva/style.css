@@ -1,0 +1,64 @@
+#ContenedorPrevisualizacionReserva{
+    padding: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    transition: .4s;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#ResumenReserva{
+    position: relative;
+    left: 50%;
+    transform: translateX(-35%);
+    margin: 50px 0;
+}
+
+#PrevisualizacionReserva p {
+    position: relative;
+    right: 0;
+}
+
+#PrevisualizacionReserva p span{
+    text-transform: uppercase;
+    position: absolute;
+    left: 50%;
+}
+
+#ContenedorBotonesConfirmarReserva{
+    position: relative;
+    height: 40px;
+    margin-top: 40px;
+}
+
+#BotonesConfirmarReserva{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#BotonesConfirmarReserva button{
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 1em;
+    margin: 0 5px;
+    border: none;
+    background: #a3ff8c;
+    width: 100px;
+}
+
+#BotonesConfirmarReserva button:active{
+    background: #48ff00;
+}
+
+#ResumenReserva p{
+    font-weight: bold;
+}
+
+#ResumenReserva p span{
+    font-weight: normal;
+}

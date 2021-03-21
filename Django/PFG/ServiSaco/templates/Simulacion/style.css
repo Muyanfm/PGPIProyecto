@@ -1,0 +1,98 @@
+#ContenedorSimulacion{
+    width: 400px;
+    padding: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    transition: .4s;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: white;
+}
+
+#ContenedorSimulacion:hover{
+    border: 1px solid rgba(0,0,0,0);
+    box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.1);
+}
+
+#ContenedorSimulacion div{
+    margin: 15px;
+}
+
+#SimularDia input{
+    position: relative;
+    border: 1px solid #c0ff8c;
+    border-radius: 4px;
+    height: 20px;
+    padding: 8px;
+    font-size: 15px;
+}
+
+#hora, #minuto{
+    border-radius: 5px;
+    border: 1px solid #c9ff8c;
+    cursor: pointer;
+    font-size: 15px;
+    background: none;
+    padding: 5px;
+    font-size: 15px;
+    width: 40px;
+}
+
+hr{
+    margin: 20px 0;
+    border: .5px solid rgba(0,0,0,0.1);
+}
+
+#Matricula{
+    position: relative;
+}
+
+#Matricula label{
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 0;
+    background-color: white;
+    padding: 0 4px;
+    transition: .15s;
+    color: #989898;
+}
+
+#Matricula input{
+    position: relative;
+    border: 1px solid #a3ff8c;
+    border-radius: 4px;
+    height: 20px;
+    padding: 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    z-index: 1;
+    background: none;
+    transition: .15s;
+}
+
+.ContenedorBoton{
+    position: relative;
+    height: 35px;
+}
+
+#ContenedorSimulacion button{
+    width: 226px;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 1em;
+    margin: 0 5px;
+    border: none;
+    background: #c0ff8c;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#ContenedorSimulacion button:active{
+    background: #9dff00;
+}

@@ -1,0 +1,180 @@
+
+*:focus{ 
+    outline: none;
+}
+
+hr{
+    margin: 20px 0;
+    border: .5px solid rgba(0,0,0,0.1);;
+}
+
+#ContenedorReserva {
+    width: 500px;
+    padding: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    transition: .4s;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: white;
+}
+
+#ContenedorReserva:hover {
+    border: 1px solid rgba(0,0,0,0);
+    box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.1);
+}
+
+#ContenedorInfoPedido{
+    position: relative;
+    margin-top: 30px;
+}
+
+#InfoPedido label{
+    position: absolute;
+    left: 10px;
+    top: 20px;
+    transform: translateY(-50%);
+    z-index: 0;
+    background-color: white;
+    padding: 0 4px;
+    transition: .15s;
+    color: #989898;
+}
+
+#InfoPedido input{
+    position: relative;
+    border: 1px solid #b0ff8c;
+    border-radius: 4px;
+    height: 20px;
+    padding: 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    z-index: 1;
+    background: none;
+    transition: .15s;
+}
+
+.ContenedorBoton{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#BtnDisponibilidad{
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 1em;
+    margin: 0 5px;
+    border: none;
+    background: #cdff8c;
+    margin-top: 40px;
+    width: 120px;
+    height: 40px;
+}
+
+#SelectorDia, #SelectorTipo{
+    margin: 15px 0;
+}
+
+.BotonSelector{
+    cursor: pointer;
+    background: #fff5cc;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin: 0 5px;
+}
+
+.selectorDiaClicked, .selectorTipoClicked, .selectorHoraClicked{
+    background: #c0ff8c;
+}
+
+.BotonSelector:hover{
+    background: #baff8c;
+
+}
+
+#HoraReserva{
+    position: relative;
+}
+
+#SelectorHora{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 48px;
+    width: 90%;
+    padding-top: 10px;
+    margin: 10px 0;
+    overflow-x:scroll;
+}
+
+.flecha{
+    position: absolute;
+    color: #989898;
+    top: 54%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.flecha:hover{
+    color: black;
+}
+
+#izq{
+    left: 0;
+}
+#der{
+    right: 0;
+}
+
+#ContenedorBotonesFinReserva{
+    position: relative;
+    height: 40px;
+}
+
+#BotonesFinReserva{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#BotonesFinReserva button{
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 1em;
+    margin: 0 5px;
+    border: none;
+}
+
+#BotonesFinReserva button:active{
+    background: #73ff00;
+}
+
+#BotonReservar, #BotonLimpiar{
+    background: #b6ff8c;
+}
+
+#ContenedorInfoReserva p {
+    position: relative;
+    right: 0;
+}
+
+#ContenedorInfoReserva p span{
+    text-transform: uppercase;
+    position: absolute;
+    left: 160px;
+}
+
+#ContenedorInfoReserva p{
+    font-weight: bold;
+}
+
+#ContenedorInfoReserva p span{
+    font-weight: normal;
+} 
+

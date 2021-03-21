@@ -1,0 +1,9 @@
+#bienvenida img{
+    border-radius: 40%;
+    height: 350px;
+    opacity: .8;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

@@ -1,0 +1,72 @@
+{% extends "PlantillaBase/base.html" %}
+
+{% block title %}Reservas{% endblock %}
+
+{% block mi_css_js %}
+
+{% load static %}
+<!-- Mi JavaScript -->
+<script src="{% static 'Reservas/javascript.js' %}"></script>
+
+<!-- Mi CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'Reservas/style.css' %}">
+
+{% endblock %}
+
+{% block contenido %}
+<div id="ContenedorConfiguracion">
+    
+    <h3>Reservas</h3>
+
+    <label id="PedidosDia"><input type="checkbox" value="PedidosDiaCB"> Pedidos del día</label>
+    
+    <br><br>
+        
+    <div id="Configuracion">
+
+        <div id="ContenedorReservas">
+            <div id="Reservas">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Reserva</th>
+                            <th>Vehiculo</th>
+                            <th>Operación</th>
+                            <th>Tipo de Vehículo</th>
+                            <th>Matrícula del vehículo</th>
+                            <th>Día</th>
+                            <th>Hora Inicio</th>
+                            <th>Hora Fin</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                
+                    <tbody>
+                        {% for reserva in reservas %}
+                            <tr>
+                            {% for item in reserva %}
+                                <td> {{ item }} </td>
+                            {% endfor %}
+                            <td>
+                                <a class="verReservaLink"><i class="far fa-eye"></i></a>
+                                <a class="editarReservaLink"><i class="fas fa-pencil-alt"></i></a>
+                                <a class="eliminarReservaLink"><i class="fas fa-trash-alt"></i></a>
+                            </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    var cantidadVehiculo = "{{ cantVehiculos }}";
+</script>
+
+{% endblock %}
+

@@ -1,0 +1,42 @@
+{% extends "PlantillaBase/base.html" %}
+
+{% block title %}Reservas{% endblock %}
+
+{% block mi_css_js %}
+
+{% load static %}
+<!-- Mi JavaScript -->
+<script src="{% static 'Reservas/VerReserva/javascript.js' %}"></script>
+
+<!-- Mi CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'Reservas/VerReserva/style.css' %}">
+{% endblock %}
+
+{% block contenido %}
+<div id="ContenedorPrevisualizacionReserva">
+    
+    <h2>Información de la Reserva</h2>
+
+    <div id="PrevisualizacionReserva">
+
+        <div id="ResumenReserva">
+            <p>ID Reserva: <span id="DatoIDReserva">{{ reserva.pedido.numero_pedido }}</span></p>
+            <p>Vehiculo: <span id="DatoMuelle">{{ reserva.disponibilidad_reserva.vehiculo.matricula }}</span></p>
+            <p>Operación: <span id="DatoOperacion">{{ reserva.disponibilidad_reserva.operacion }}</span></p>
+            <p>Tipo de vehículo: <span id="DatoTipoVehiculo">{{ reserva.disponibilidad_reserva.tipo_vehiculo.nombre }}</span></p>
+            <p>Matrícula: <span id="DatoMatricula">{{ reserva.pedido.vehiculo.matricula }}</span></p>
+            <p>Día: <span id="DatoDia">{{ reserva.disponibilidad_reserva.fecha_inicio.date }}</span></p>
+            <p>Hora Inicio: <span id="DatoHoraInicio">{{ reserva.disponibilidad_reserva.fecha_inicio.hour }}:{{ reserva.disponibilidad_reserva.fecha_inicio.minute }}</span></p>
+            <p>Hora Fin: <span id="DatoHoraFin">{{ reserva.disponibilidad_reserva.fecha_fin.hour }}:{{ reserva.disponibilidad_reserva.fecha_fin.minute }}</span></p>
+        </div>
+
+    </div>
+
+    <div id="ContenedorBotonesConfirmarReserva">
+        <div id="BotonesConfirmarReserva">
+            <a><button id="BotonVolver" type="button">Volver</button></a>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

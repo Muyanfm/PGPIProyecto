@@ -1,0 +1,35 @@
+
+table{
+    border-collapse: collapse;
+}
+
+table, th, td{
+    border: 1px solid #d1d1d1;
+}
+
+th{
+    padding: 5px;
+    background-color: #9fff8c;
+    font-size: .9em;
+}
+  
+td{
+    text-align: center;
+}
+
+td{
+    padding: 8px 0;
+}
+
+tr:nth-child(even){
+    background-color: #fff5cc;
+}
+
+
+.comboBox{
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+  background: none;
+  font-size: .75em;
+}

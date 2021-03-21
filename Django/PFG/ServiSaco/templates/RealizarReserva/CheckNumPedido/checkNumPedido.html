@@ -1,0 +1,46 @@
+{% extends "PlantillaBase/base.html" %}
+
+{% block title %}Realizar Reserva{% endblock %}
+
+{% block mi_css_js %}
+
+{% load static %}
+<!-- Mi JavaScript -->
+<script src="{% static 'RealizarReserva/CheckNumPedido/javascript.js' %}"></script>
+
+<!-- Mi CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'RealizarReserva/style.css' %}">
+{% endblock %}
+
+{% block contenido %}
+    <div id="ContenedorReserva">
+        <h3>Introduzca el número de su pedido para verificar su existencia</h3>
+
+        <div id="ContenedorInfoPedido">
+
+            <div id="InfoPedido">
+                <label>Nº Pedido</label>
+                <input id="InputNumPedido" name="InputNumPedido" type="text" maxlength="6">
+            </div>
+
+            <div class="ContenedorBoton">
+                <a id="BtnDisponibilidad">Consultar Disponibilidad</a>
+            </div>
+        </div>
+
+        {% if pedidoExiste is False %}
+            <p style="color: red;">El número de pedido no existe</p>
+        {% endif %}
+
+        <div>
+            <h3>Matrícula: <span style="font-weight: normal;">{{ matricula }}</span></h3>
+            <h3>Listado de pedidos:</h3>
+            <ul>
+                {% for pedido in pedidos %}
+                    <li>{{ pedido }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+{% endblock %}

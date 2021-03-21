@@ -1,0 +1,29 @@
+{% extends "PlantillaBase/base.html" %}
+
+{% block title %}Simulación{% endblock %}
+
+{% block mi_css_js %}
+
+{% load static %}
+<!-- Mi JavaScript -->
+<script src="{% static 'Simulacion/LecturaMatricula/javascript.js' %}"></script>
+
+<!-- Mi CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'Simulacion/LecturaMatricula/style.css' %}">
+{% endblock %}
+
+{% block contenido %}
+
+    <div id="ContenedorLecturaMatricula">
+        <h2>
+            Leyendo matrícula para <span id="io">{{ io }}</span>
+        </h2>
+        <div id="LecturaMatricula">
+            <span id="span1">{{ mtr }}</span>
+            <span id="span2">{{ mtr }}</span>
+            <img src="{% static 'Simulacion/LecturaMatricula/media/cam.jpg' %}" alt="No se encuentra la imagen">
+            <img id="lectura" src="{% static 'Simulacion/LecturaMatricula/media/lectura.gif' %}" alt="No se encuentra la imagen" draggable="false">
+        </div>
+    </div>
+
+{% endblock %}

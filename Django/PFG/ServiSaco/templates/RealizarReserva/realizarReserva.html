@@ -1,0 +1,61 @@
+{% extends "PlantillaBase/base.html" %}
+
+{% block title %}Realizar Reserva{% endblock %}
+
+{% block mi_css_js %}
+
+{% load static %}
+<!-- Mi JavaScript -->
+<script src="{% static 'RealizarReserva/javascript.js' %}"></script>
+
+<!-- Mi CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'RealizarReserva/style.css' %}">
+{% endblock %}
+
+{% block contenido %}
+    <div id="ContenedorReserva">
+
+        <div id="ContenedorInfoReserva">
+            <p>Número Pedido: <span id="NumeroPedidoVal">{{ pedido.0 }}</span></p>
+            <p>Operación: <span>{{ pedido.1 }}</span></p>
+            <p>Tipo de Vehículo: <span>{{ pedido.2 }}</span></p>
+            <p>Matrícula: <span>{{ pedido.3 }}</span></p>
+        </div>
+
+        <hr>
+
+        <div id="ContenedorDiaReserva">
+            <div id="DiaReserva">
+                <label>Día de Reserva: </label>
+                <div id="SelectorDia">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div id="ContenedorHoraReserva">
+            <div id="HoraReserva">
+                <label>Hora de la Reserva</label>
+                <span id="ComprobacionHoraReserva"></span>
+                <div id="SelectorHora">
+                </div>
+            </div>
+        </div>
+
+        <div id="ContenedorBotonesFinReserva">
+            <div id="BotonesFinReserva">
+                <a><button id="BotonReservar" type="button">Reservar</button></a>
+                <button id="BotonLimpiar" type="button">Limpiar</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        var dias = {{ dias|safe }};
+        var horas = {{ horas|safe }};
+        var idHueco = {{ idHueco|safe }};
+    </script>
+
+{% endblock %}

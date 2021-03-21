@@ -1,0 +1,61 @@
+{% extends "PlantillaBase/base.html" %}
+
+{% block title %}Histórico de Pedidos{% endblock %}
+
+{% block mi_css_js %}
+
+{% load static %}
+<!-- Mi JavaScript -->
+<script src="{% static 'HistoricoPedidos/javascript.js' %}"></script>
+
+<!-- Mi CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'HistoricoPedidos/style.css' %}">
+
+{% endblock %}
+
+{% block contenido %}
+<div id="ContenedorConfiguracion">
+    
+    <h3>Histórico de Pedidos</h3>
+        
+    <div id="Configuracion">
+
+        <div id="ContenedorHistoricoPedidos">
+            <div id="HistoricoPedidos">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Pedido</th>
+                            <th>Tipo de Vehículo</th>
+                            <th>Matrícula del vehículo</th>
+                            <th>Operación</th>
+                            <th>Hora Inicio</th>
+                            <th>Hora Fin</th>
+                            <th>Resultado</th>
+                        </tr>
+                    </thead>
+                
+                    <tbody>
+                        {% for pedido in historico %}
+                            <tr>
+                            {% for item in pedido %}
+                                <td> {{ item }} </td>
+                            {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    var cantidadVehiculo = "{{ cantVehiculos }}";
+</script>
+
+{% endblock %}
+

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>{% block title%}{% endblock %}</title>
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <!-- Fuente Roboto -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,700&display=swap" rel="stylesheet">
+
+    {% load static %}
+    <!-- Mi JavaScript -->
+    <script src="{% static 'PlantillaBase/javascript.js' %}"></script>
+    <!-- JavaScript NavBar-->
+    <script src="{% static 'PlantillaBase/NavBar/javascript.js' %}"></script>
+    <!-- JavaScript Botones Menú Lateral -->
+    <script src="{% static 'PlantillaBase/MenuLateral/javascript.js' %}"></script>
+
+    <!-- Mi CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'PlantillaBase/style.css' %}">
+    <!-- NavBar CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'PlantillaBase/NavBar/style.css' %}">
+    <!-- Botones Menú Lateral CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'PlantillaBase/MenuLateral/style.css' %}">
+
+    <!-- CSS y JS de plantillas hijas -->
+    {% block mi_css_js %}{% endblock %}
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'PlantillaBase/media/logo.ico' %}"/>
+
+</head>
+
+<body>
+        <div id="navegador">
+            <!-- NavBar -->
+            {% include "PlantillaBase/NavBar/BarraNav.html" %}
+        </div>
+
+        <div id="contenido">
+            <!-- Botones Menú Lateral -->
+            {% include "PlantillaBase/MenuLateral/MenuLateral.html" %}
+
+            <div id="ContenedorContenido">
+                <!-- Contenido -->
+                {% block contenido %}{% endblock %}
+            </div>
+        </div>
+
+</body>
+
+</html>

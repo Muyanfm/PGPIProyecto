@@ -1,0 +1,27 @@
+{% extends "PlantillaBase/base.html" %}
+
+{% block mi_css_js %}
+
+{% load static %}
+<!-- Mi JavaScript -->
+<script src="{% static 'Pedidos/javascript.js' %}"></script>
+
+<!-- Mi CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'Pedidos/style.css' %}">
+
+{% endblock %}
+
+{% block contenido %}
+
+<div id="ContenedorConfiguracion">
+        <h3>Tomar pedido</h3>
+
+        <form action="" class="formulario_pedido" method= "POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br>
+            <button type "submit" id="btnEnviar" class="button">Enviar</button>
+        </form>
+    {{mensaje}}
+</div>
+ {% endblock %}   

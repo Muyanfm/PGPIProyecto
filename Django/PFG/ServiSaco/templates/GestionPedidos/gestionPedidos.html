@@ -1,0 +1,72 @@
+{% extends "PlantillaBase/base.html" %}
+
+{% block title %}Gestión de Pedidos{% endblock %}
+
+{% block mi_css_js %}
+
+{% load static %}
+<!-- Mi JavaScript -->
+<script src="{% static 'GestionPedidos/javascript.js' %}"></script>
+
+<!-- Mi CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'GestionPedidos/style.css' %}">
+
+{% endblock %}
+
+{% block contenido %}
+<div id="ContenedorConfiguracion">
+    
+    <h3>Pedidos</h3>
+    
+    <br><br>
+        
+    <div id="Configuracion">
+
+        <div id="ContenedorReservas">
+
+            <label id="CargarPedidosLabel" for="CargarPedidos">Añadir pedidos</label>
+            <input type="file" id="CargarPedidos">
+            
+            <div id="Reservas">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nº Pedido</th>
+                            <th>Operación</th>
+                            <th>Tipo de Vehículo</th>
+                            <th>Matrícula del vehículo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                
+                    <tbody>
+                        {% for pedido in pedidos %}
+                            <tr>
+                            {% for item in pedido %}
+                                <td> {{ item }} </td>
+                            {% endfor %}
+                            <td>
+                                <a class="eliminarPedidoLink"><i class="fas fa-trash-alt"></i></a>
+                            </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+
+    </div>
+
+    <div id="ContenedorBtnActualizar">
+        <a id="BtnActualizar">Actualizar pedidos</a>
+    </div>
+
+</div>
+
+<script>
+    var cantidadVehiculo = "{{ cantVehiculos }}";
+</script>
+
+{% endblock %}
+

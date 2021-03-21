@@ -1,0 +1,51 @@
+
+#ContenedorBarraLateral{
+    width: 270px;
+    min-width: 270px;
+    background: white;
+    border-right: 1px solid rgba(0,0,0,0.1);
+}
+
+#BarraLateral{
+    margin-top: 80px;
+}
+
+#ContenedorBarraLateral div{
+    position: relative;
+}
+
+#ContenedorBarraLateral div i{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 20px;
+    font-size: 1.1em;
+}
+
+.botonPantallaPrincipal{
+    font-size: 1.1em;
+    padding: 15px 0;
+    padding-left: 45px;
+    cursor: pointer;
+    border: none;
+    border-left: 8px solid rgba(0, 0, 0, 0);
+    transition: .2s;
+    background: none;
+    width: 100%;
+    text-align: left;
+}
+
+.botonPantallaPrincipal:hover{
+    background: #9fff8c;
+    border-left: 8px solid rgba(0, 0, 0, 0);
+    padding-left: 55px;
+}
+
+.botonPantallaPrincipal:active{
+    transition: none;
+    background: #deffcf;
+}
+
+.btnActActive{
+    border-left: 10px solid #7ba856;
+}

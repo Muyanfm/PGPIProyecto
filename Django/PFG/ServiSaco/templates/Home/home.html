@@ -1,0 +1,23 @@
+{% extends 'PlantillaBase/base.html' %}
+
+{% block title%}Home{% endblock %}
+
+{% block mi_css_js %}
+
+{% load static %}
+<!-- Mi JavaScript -->
+<script src="{% static 'Home/javascript.js' %}"></script>
+
+<!-- Mi CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'Home/style.css' %}">
+{% endblock %}
+
+{% block contenido %}
+
+<div id="bienvenida">
+
+    <img src="{% static 'Home/media/CarreteraAnim.gif' %}" alt="No se ha podido cargar la imagen" draggable="false">
+    
+</div>
+
+{% endblock %}

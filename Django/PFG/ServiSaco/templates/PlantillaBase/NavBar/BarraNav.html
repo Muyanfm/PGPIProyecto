@@ -1,0 +1,36 @@
+{% load static %}
+
+<div id="ContenedorNavbar">
+
+    <div id="ContenedorLogo">
+        <a href="{% url 'home' %}"><img src="{% static 'PlantillaBase/NavBar/media/logo.png' %}"></a>
+    </div>
+
+    <div id="ContenedorNavegacion">
+        <ul>
+            <li><a style="text-decoration: underline;" href="https://www.youtube.com/playlist?list=PL5IhcRqG_oT98vapg680eE_wNgCtdF6Gk" target="_blank">Tutorial del sistema</a></li>
+        </ul>
+    </div>
+
+    <div id="ContenedorUsuario">
+        <div>
+            {% if user.is_authenticated %}
+                {% if user.usuario.rol.nombre == 'Administrador' %}
+                <p id="admin" style="text-decoration: underline;"><a href="/admin/">Administración del Sistema</a></p>
+                {% endif %}
+                <p id="welcome">Hola {{ user.username }}, </p>
+                <p id="logout"><a href="/logout/">Logout</a></p>
+            {% else %}
+                <p id="login"><a href="/login/">Login</a></p>
+            {% endif %}
+            {% if user.usuario.rol.nombre == 'Administrador' %}
+                <img src="{% static 'PlantillaBase/NavBar/media/admin.png' %}">
+            {% elif user.usuario.rol.nombre == 'Gerente' %}
+                <img src="{% static 'PlantillaBase/NavBar/media/gerente.png' %}">
+            {% elif user.usuario.rol.nombre == 'Transportista' %}
+                <img src="{% static 'PlantillaBase/NavBar/media/transportista.png' %}">
+            {% endif %}
+        </div>
+    </div>
+
+</div>

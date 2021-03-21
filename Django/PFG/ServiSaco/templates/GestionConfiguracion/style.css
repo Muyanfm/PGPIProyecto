@@ -1,0 +1,131 @@
+
+#ContenedorConfiguracion{
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 40px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    transition: .4s;
+}
+
+#ContenedorConfiguracion:hover{
+    border: 1px solid rgba(0,0,0,0);
+    box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.1);
+}
+
+#Configuracion{
+    right: 0;
+    overflow: scroll;
+}
+
+#Configuracion h3{
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+}
+
+#DiasConfiguracion{
+    margin-top: 40px;
+}
+
+#DiasConConf, #DiasSinConf{
+    margin: 40px 0;
+}
+
+.BotonSelector{
+    cursor: pointer;
+    background: #dcffcc;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin: 0 5px;
+}
+
+.BotonSelectorDisabled{
+    cursor: pointer;
+    background: #f0f0f0;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin: 0 5px;
+}
+
+.selectorDiaClicked{
+    background: #a3ff8c;
+}
+
+.BotonSelector:hover{
+    background: #b6ff8c;
+}
+
+#CargarConfiguracionLabel{
+    cursor: pointer;
+    position: absolute;
+    right: 30px;
+    top: 215px;
+    background: #b6ff8b;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#CargarConfiguracionLabel:active{
+    background: #9dff00;
+}
+ 
+ #CargarConfiguracion{
+    display: none;
+ }
+
+ #ContenedorBtnActualizar{
+    margin-top: 40px;
+    height: 50px;
+}
+
+#ContenedorBtnActualizar a{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #b9ff8b;
+}
+
+/* Tabla */
+
+
+table{
+    border-collapse: collapse;
+    width: 800px;
+}
+
+table, th, td{
+    border: 1px solid #d1d1d1;
+}
+
+th{
+    padding: 5px;
+    background-color: #b0ff8c;
+    font-size: .9em;
+}
+  
+td{
+    text-align: center;
+    padding: 8px 0;
+}
+
+tr:nth-child(even){
+    background-color: #dfffcc;
+}
+
+
+.comboBox{
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+  background: none;
+  font-size: .75em;
+}

@@ -1,0 +1,74 @@
+{% if user.is_authenticated %}
+
+<div id="ContenedorBarraLateral">
+
+    <div id="BarraLateral">
+        {% if user.usuario.rol.nombre == 'Operador' %}
+        <div>
+            <i class="far fa-pedido-check"></i>
+            <a href="{% url 'pedidos' %}">
+                <button id="pedidos" class="botonPantallaPrincipal" type="button" value="Realizar Pedidos">Realizar Pedidos</button>
+            </a>
+        </div>
+        {% endif %}
+
+        {% if user.usuario.rol.nombre == 'Transportista' %}
+        <div>
+            <i class="far fa-calendar-check"></i>
+            <a href="{% url 'checkNumPedido' %}">
+                <button id="reservar" class="botonPantallaPrincipal" type="button" value="Realizar Reserva">Realizar Reserva</button>
+            </a>
+        </div>
+        {% endif %}
+
+        <div>
+            <i class="fas fa-eye"></i>
+            <a>
+                <button id="reservas" class="botonPantallaPrincipal" type="button" value="Reservas">Reservas</button>
+            </a>
+        </div>
+        
+        {% if user.usuario.rol.nombre == 'Administrador' %}
+        <div>
+            <i class="fas fa-tools"></i>
+            <a>
+                <button id="gestionConf" class="botonPantallaPrincipal" type="button" value="Gestión de configuración">Gestión de configuración</button>
+            </a>
+        </div>
+        
+        <div>
+            <i class="fas fa-list-ul"></i>
+            <a href="{% url 'gestionPedidos' %}">
+                <button id="gestionPedidos" class="botonPantallaPrincipal" type="button" value="Gestión de Pedidos">Gestión de Pedidos</button>
+            </a>
+        </div>
+        {% endif %}
+    
+        {% if user.usuario.rol.nombre != 'Transportista' %}
+        <div>
+            <i class="fas fa-warehouse"></i>
+            <a href="{% url 'estadoVehiculos' %}">
+                <button id="estadoVehiculos" class="botonPantallaPrincipal" type="button" value="Estado de los Vehiculo">Estado de los Vehiculos</button>
+            </a>
+        </div>
+    
+        <div>
+            <i class="fas fa-history"></i>
+            <a href="{% url 'historicoPedidos' %}">
+                <button id="historicoPedidos" class="botonPantallaPrincipal" type="button" value="Histórico de Pedidos">Histórico de Pedidos</button>
+            </a>
+        </div>
+    
+        <div>
+            <i class="fas fa-hard-hat"></i>
+            <a href="{% url 'simulacion' %}">
+                <button id="simular" class="botonPantallaPrincipal" type="button" value="Simular Entrada Vehículo">Simulación</button>
+            </a>
+        </div>
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endif %}

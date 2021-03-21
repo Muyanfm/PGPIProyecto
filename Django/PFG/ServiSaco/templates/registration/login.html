@@ -1,0 +1,43 @@
+{% extends "PlantillaBase/base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block mi_css_js %}
+
+{% load static %}
+<!-- Mi JavaScript -->
+<script src="{% static 'registration/javascript.js' %}"></script>
+
+<!-- Mi CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'registration/style.css' %}">
+{% endblock %}
+
+{% block contenido %}
+<div id="ContenedorLogin">
+    {% if user.is_authenticated %}
+    <h2>Hola {{ user }}</h2>
+    <a href="/logout/">Logout</a>
+    {% endif %}
+
+    <form action="" method="POST">
+
+        {% csrf_token %}
+
+        <div id="ContenedorUser">
+            <label id="labelUsuario">Usuario</label>
+            <input id="Usuario" class="textField" type="text" name="username">
+        </div>
+
+        <div id="ContenedorPassword">
+            <label id="labelPassword">Contraseña</label>
+            <input id="Password" class="textField" type="password" name="password">
+        </div>
+
+        <input id="Submit" type="submit" value="Login">
+
+        {% if form.errors %}
+        <p style="color: red;">Existen errores al hacer el login</p>
+        {% endif %}
+    </form>
+</div>
+{% endblock %}

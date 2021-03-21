@@ -1,0 +1,46 @@
+
+@import url('https://fonts.googleapis.com/css?family=Cuprum|Roboto:700&display=swap');
+
+#ContenedorLecturaMatricula{
+    width: 500px;
+    padding: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    transition: .4s;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: white;
+}
+
+#LecturaMatricula{
+    position: relative;
+    width: fit-content;
+    perspective: 600px;
+}
+
+#LecturaMatricula span{
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Cuprum', sans-serif;
+    position: absolute;
+}
+
+#span1{
+    bottom: 29px;
+    left: 127px;
+    font-size: 5.4em;
+}
+
+#span2{
+    top: 93px;
+    left: 30px;
+    font-size: 3.7em;
+    transform: rotateX(-13deg) rotateY(133deg);
+    opacity: .83;
+}
+
+#lectura{
+    position: absolute;
+    left: 0;
+}

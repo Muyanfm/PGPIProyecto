@@ -1,0 +1,42 @@
+{% extends "PlantillaBase/base.html" %}
+
+{% block title %}Gestión de Configuración{% endblock %}
+
+{% block mi_css_js %}
+
+{% load static %}
+<!-- Mi JavaScript -->
+<script src="{% static 'GestionConfiguracion/javascript.js' %}"></script>
+
+<!-- Mi CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'GestionConfiguracion/style.css' %}">
+
+{% endblock %}
+
+{% block contenido %}
+<div id="ContenedorConfiguracion">
+    
+    <h3>Configuración de los vehiculos</h3>
+
+    <div id="DiasConfiguracion">
+
+        <div id="DiasConConf">
+            <p>Días con Configuración</p>
+        </div>
+        <div id="DiasSinConf">
+            <p>Días sin Configuración</p>
+        </div>
+
+        <p id="MensajeSeleccionarDia">
+            Para cargar o modificar una configuración debe seleccionar un día
+        </p>
+    </div>
+
+</div>
+
+<script>
+    var configuracion = {{ configuracion|safe }};
+    var diasConConfiguracion = {{ diasConConfiguracion|safe }};
+</script>
+
+{% endblock %}

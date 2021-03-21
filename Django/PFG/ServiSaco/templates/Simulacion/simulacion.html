@@ -1,0 +1,44 @@
+{% extends "PlantillaBase/base.html" %}
+
+{% block title %}Simulación{% endblock %}
+
+{% block mi_css_js %}
+
+{% load static %}
+<!-- Mi JavaScript -->
+<script src="{% static 'Simulacion/javascript.js' %}"></script>
+
+<!-- Mi CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'Simulacion/style.css' %}">
+{% endblock %}
+
+{% block contenido %}
+<div id="ContenedorSimulacion">
+
+    <div id="SimularDia">
+        <label>Día: </label>
+    </div>
+
+    <div id="SimularHora">
+        <label for="hora">Hora: </label>
+        <input id="hora" type="number" min="6" max="14" value="6">
+        :
+        <input id="minuto" type="number" min="0" max="60" value="0">
+    </div>
+
+    <hr>
+
+    <div id="Matricula">
+        <label style="top: 50%; z-index: 0; color: rgb(152, 152, 152); font-size: 1em;">Matrícula</label>
+        <input name="matricula" type="text" maxlength="7" style="border: 1px solid rgb(255, 232, 140);">
+    </div>
+    <br>
+    <div class="ContenedorBoton">
+        <a id="entrada"><button class="" type="button" value="Simular entrada de vehiculo">Simular entrada de vehículo</button></a>
+    </div>
+    <div class="ContenedorBoton">
+        <a id="salida"><button class="" type="button" value="Simular salida de vehiculo">Simular salida de vehículo</button></a>
+    </div>
+
+</div>
+{% endblock %}

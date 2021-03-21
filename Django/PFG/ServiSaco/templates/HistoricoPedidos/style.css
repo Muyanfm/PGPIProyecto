@@ -1,0 +1,94 @@
+
+#ContenedorConfiguracion{
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 40px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    transition: .4s;
+}
+
+#ContenedorConfiguracion:hover{
+    border: 1px solid rgba(0,0,0,0);
+    box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.1);
+}
+
+#Configuracion{
+    right: 0;
+    overflow: scroll;
+    height: 300px;
+}
+#Configuracion h3{
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+}
+
+#DiasConfiguracion{
+    margin-top: 40px;
+}
+
+#DiasConConf, #DiasSinConf{
+    margin: 40px 0;
+}
+
+.BotonSelector{
+    cursor: pointer;
+    background: #fff5cc;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin: 0 5px;
+}
+
+.selectorDiaClicked{
+    background: #d3ff8c;
+}
+
+.BotonSelector:hover{
+    background: #c4ff8c;
+
+}
+
+/* */
+
+
+table{
+    width: 700px;
+    border-collapse: collapse;
+}
+
+table, th, td{
+    border: 1px solid #d1d1d1;
+}
+
+th{
+    padding: 5px;
+    background-color: #c9ff8c;
+    font-size: .9em;
+}
+  
+td{
+    text-align: center;
+}
+
+td{
+    padding: 8px 0;
+}
+
+tr:nth-child(even){
+    background-color: #dcffcc;
+}
+
+
+.comboBox{
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+  background: none;
+  font-size: .75em;
+}

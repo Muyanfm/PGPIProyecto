@@ -1,0 +1,25 @@
+*{
+    font-family: 'Roboto', sans-serif;
+    /*font-family: 'Raleway', sans-serif;*/
+    text-decoration: none;
+}
+
+*:focus{
+    outline: none;
+}
+
+body{
+    margin: 0;
+    background: #31632d;
+    height: 100vh;
+}
+
+#contenido{
+    display: flex;
+    height: 100%;
+}
+
+#ContenedorContenido{
+    width: 100%;
+    position: relative;
+}
