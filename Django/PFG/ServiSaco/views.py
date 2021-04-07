@@ -147,7 +147,7 @@ def resumenReserva(request, numPedido, idHueco):
         hueco.save()
         
         reserva = Reserva.objects.create(pedido = pedido, disponibilidad_reserva = hueco)
-        
+        reserva.save()
 
         
     else:
@@ -246,6 +246,7 @@ def guardarReserva(request, numPedido, idHueco):
     hueco.estado = "RESERVADO"
     hueco.save()
     reserva = Reserva.objects.create(pedido = pedido, disponibilidad_reserva = hueco)
+    reserva.save()
     doc = docHtml.render({'user' : request.user})
     return HttpResponse(doc)
 
@@ -305,6 +306,7 @@ def gestionPedidos(request):
             pedido_historico = PedidoCompletado.objects.filter(numero_pedido = pedido[0])
             if(len(Pedido.objects.filter(numero_pedido = pedido[0])) == 0 and len(pedido_historico) == 0):
                 pedido_creado = Pedido.objects.create(operacion = pedido[1].upper(), numero_pedido = pedido[0], vehiculo = vehiculo)
+                pedido_creado.save()
         
       
 
@@ -377,12 +379,13 @@ def gestionConfiguracion(request, dia):
                         vehiculo = vehiculo,
                         resultado = "AUSENTE"
                         )
+                    pedido_completado.save()    
                     pedido.delete()
                 hueco.delete()
 
         for configuracion in listaConfiguracion:
             hora_inicio = fecha_configuracion
-            
+            hora_inicio.save()
             vehiculo = Vehiculo.objects.filter(matricula = configuracion[0])
             if(len(vehiculo) == 0):
                 vehiculo = Vehiculo.objects.update_or_create(matricula = configuracion[0], estado = "LIBRE")              
@@ -398,7 +401,7 @@ def gestionConfiguracion(request, dia):
             while(i < 10):
                 operacion = configuracion[i].upper()
                 configuracion_nueva = ConfiguracionVehiculo.objects.create(operacion = operacion, fecha = fecha_inicio, vehiculo = vehiculo, tipo_vehiculo = tipo_vehiculo)
-                
+                configuracion_nueva.save()
                 fecha_inicio = fecha_inicio + datetime.timedelta(hours = 1)
                 i+=1
             i = 2
@@ -416,6 +419,7 @@ def gestionConfiguracion(request, dia):
                     while(fecha_inicio + tiempo_operacion <= fecha_siguiente_configuracion):
                         fecha_fin = fecha_inicio + tiempo_operacion
                         disponibilidad_nueva = DisponibilidadReserva.objects.create(operacion = operacion, fecha_inicio = fecha_inicio, fecha_fin = fecha_fin, estado = "LIBRE", vehiculo = vehiculo, tipo_vehiculo = tipo_vehiculo)
+                        disponibilidad_nueva.save()
                         fecha_inicio = fecha_fin
 
                         if(fecha_inicio + tiempo_operacion > fecha_siguiente_configuracion and i+1 < 10):
@@ -577,6 +581,7 @@ def checkSimulacion(request, io, mtr, dia, hora):
                         vehiculo = vehiculo,
                         resultado = "COMPLETADO"
                     )
+                    pedido_completado.save()
                     reserva_sim = [pedido.numero_pedido, vehiculo.matricula, pedido.operacion, tipo_vehiculo.nombre, vehiculo.matricula, fecha.date, hueco_reserva.fecha_inicio.time, fecha.time]
                     pedido.delete()
                     reserva.delete()
@@ -626,7 +631,7 @@ def checkSimulacion(request, io, mtr, dia, hora):
                     pedido.delete()
                     reserva.delete()
                     hueco_reserva.delete()
-                    
+                    pedido_completado.save()
              
                     caso = 2
 
