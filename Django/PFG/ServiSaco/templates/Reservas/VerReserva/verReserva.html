@@ -21,10 +21,10 @@
 
         <div id="ResumenReserva">
             <p>ID Reserva: <span id="DatoIDReserva">{{ reserva.pedido.numero_pedido }}</span></p>
-            <p>Vehiculo: <span id="DatoMuelle">{{ reserva.disponibilidad_reserva.vehiculo.matricula }}</span></p>
+            <p>Vehiculo: <span id="DatoVehiculo">{{ reserva.disponibilidad_reserva.vehiculo.matricula }}</span></p>
             <p>Operación: <span id="DatoOperacion">{{ reserva.disponibilidad_reserva.operacion }}</span></p>
             <p>Tipo de vehículo: <span id="DatoTipoVehiculo">{{ reserva.disponibilidad_reserva.tipo_vehiculo.nombre }}</span></p>
-            <p>Matrícula: <span id="DatoMatricula">{{ reserva.pedido.vehiculo.matricula }}</span></p>
+            <p>Dirección: <span id="Dirección">{{ reserva.pedido.direccion }}</span></p>
             <p>Día: <span id="DatoDia">{{ reserva.disponibilidad_reserva.fecha_inicio.date }}</span></p>
             <p>Hora Inicio: <span id="DatoHoraInicio">{{ reserva.disponibilidad_reserva.fecha_inicio.hour }}:{{ reserva.disponibilidad_reserva.fecha_inicio.minute }}</span></p>
             <p>Hora Fin: <span id="DatoHoraFin">{{ reserva.disponibilidad_reserva.fecha_fin.hour }}:{{ reserva.disponibilidad_reserva.fecha_fin.minute }}</span></p>

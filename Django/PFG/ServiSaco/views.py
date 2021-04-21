@@ -1,6 +1,7 @@
 from django.http import HttpResponse, request
 from django.template import loader
 from .models import *
+from .models import Reserva
 from .forms import PedidosForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
@@ -78,37 +79,73 @@ def realizarReserva(request, numPedido, dia):
         Datos a enviar
     """
     tipo_vehiculo = TipoVehiculo.objects.get(id = vehiculo.tipo_vehiculo.id)
-    datos_pedido = [pedido.numero_pedido, pedido.operacion, tipo_vehiculo.nombre, vehiculo.matricula] 
-
-    dias = []
-    fechas = []
-    huecos = DisponibilidadReserva.objects.filter(operacion = pedido.operacion, tipo_vehiculo = vehiculo.tipo_vehiculo, estado = "LIBRE")
-    fecha_actual = datetime.datetime.now(pytz.timezone('Europe/Madrid'))
-    for hueco in huecos:
-        fecha = hueco.fecha_inicio
-        dia_fecha = fecha.day
-        if dia_fecha not in dias and dia_fecha > fecha_actual.day:
-            dias.append(dia_fecha)
-            fechas.append(str(fecha.year) + "-" + str(fecha.month) + "-" + str(dia_fecha))
-    horas = []
-    idHueco = []
-    huecos_disponibles = pd.DataFrame({"horas" : [], "idHueco" : []})
-    
-    if dia != "_": 
+    datos_pedido = [pedido.numero_pedido, pedido.operacion, tipo_vehiculo.nombre, vehiculo.matricula,pedido.direccion] 
+    if pedido.operacion == "CARGA":
+        pesoahora=pedido.peso+vehiculo.pesoactual
+        if pesoahora>tipo_vehiculo.peso:           
+            docHtml = loader.get_template('Home/home.html')
+        else:
+            vehiculo.pesoactual=pesoahora           
+            vehiculo.save()    
+            dias = []
+            fechas = []
+            huecos = DisponibilidadReserva.objects.filter(operacion = pedido.operacion, tipo_vehiculo = vehiculo.tipo_vehiculo, estado = "LIBRE")
+            fecha_actual = datetime.datetime.now(pytz.timezone('Europe/Madrid'))
+            for hueco in huecos:
+                fecha = hueco.fecha_inicio
+                dia_fecha = fecha.day
+                if dia_fecha not in dias and dia_fecha > fecha_actual.day:
+                    dias.append(dia_fecha)
+                    fechas.append(str(fecha.year) + "-" + str(fecha.month) + "-" + str(dia_fecha))
+            horas = []
+            idHueco = []
+            huecos_disponibles = pd.DataFrame({"horas" : [], "idHueco" : []})
+            
+            if dia != "_": 
+                for hueco in huecos:
+                    fecha = str(hueco.fecha_inicio.year) + "-" + str(hueco.fecha_inicio.month) + "-" + str(hueco.fecha_inicio.day)
+                    hora = hueco.fecha_inicio.time()
+                    if fecha == dia and hora not in horas:
+                        horas.append(hora)
+                        idHueco.append(hueco.id)
+                huecos_disponibles = pd.DataFrame({"horas" : horas, "idHueco" : idHueco}).sort_values(by="horas", ascending=True)
+                horas = huecos_disponibles["horas"].values
+                for i, hueco in enumerate(horas):
+                    horas[i] = str(horas[i].hour) + ":" + str(horas[i].minute)
+                huecos_disponibles["horas"] = horas
+            doc = docHtml.render({'user' : request.user, 'pedido' : datos_pedido, 'dias' : fechas, 'horas' : huecos_disponibles["horas"].values.tolist(), 'idHueco' : huecos_disponibles["idHueco"].values.tolist()})
+            return HttpResponse(doc)
+    else:
+        vehiculo.pesoactual=0
+        vehiculo.save()
+        dias = []
+        fechas = []
+        huecos = DisponibilidadReserva.objects.filter(operacion = pedido.operacion, tipo_vehiculo = vehiculo.tipo_vehiculo, estado = "LIBRE")
+        fecha_actual = datetime.datetime.now(pytz.timezone('Europe/Madrid'))
         for hueco in huecos:
-            fecha = str(hueco.fecha_inicio.year) + "-" + str(hueco.fecha_inicio.month) + "-" + str(hueco.fecha_inicio.day)
-            hora = hueco.fecha_inicio.time()
-            if fecha == dia and hora not in horas:
-                horas.append(hora)
-                idHueco.append(hueco.id)
-        huecos_disponibles = pd.DataFrame({"horas" : horas, "idHueco" : idHueco}).sort_values(by="horas", ascending=True)
-        horas = huecos_disponibles["horas"].values
-        for i, hueco in enumerate(horas):
-            horas[i] = str(horas[i].hour) + ":" + str(horas[i].minute)
-        huecos_disponibles["horas"] = horas
-    doc = docHtml.render({'user' : request.user, 'pedido' : datos_pedido, 'dias' : fechas, 'horas' : huecos_disponibles["horas"].values.tolist(), 'idHueco' : huecos_disponibles["idHueco"].values.tolist()})
-
-    return HttpResponse(doc)
+            fecha = hueco.fecha_inicio
+            dia_fecha = fecha.day
+            if dia_fecha not in dias and dia_fecha > fecha_actual.day:
+                dias.append(dia_fecha)
+                fechas.append(str(fecha.year) + "-" + str(fecha.month) + "-" + str(dia_fecha))
+        horas = []
+        idHueco = []
+        huecos_disponibles = pd.DataFrame({"horas" : [], "idHueco" : []})
+        
+        if dia != "_": 
+            for hueco in huecos:
+                fecha = str(hueco.fecha_inicio.year) + "-" + str(hueco.fecha_inicio.month) + "-" + str(hueco.fecha_inicio.day)
+                hora = hueco.fecha_inicio.time()
+                if fecha == dia and hora not in horas:
+                    horas.append(hora)
+                    idHueco.append(hueco.id)
+            huecos_disponibles = pd.DataFrame({"horas" : horas, "idHueco" : idHueco}).sort_values(by="horas", ascending=True)
+            horas = huecos_disponibles["horas"].values
+            for i, hueco in enumerate(horas):
+                horas[i] = str(horas[i].hour) + ":" + str(horas[i].minute)
+            huecos_disponibles["horas"] = horas
+        doc = docHtml.render({'user' : request.user, 'pedido' : datos_pedido, 'dias' : fechas, 'horas' : huecos_disponibles["horas"].values.tolist(), 'idHueco' : huecos_disponibles["idHueco"].values.tolist()})       
+        return HttpResponse(doc)
 
 @login_required(login_url='/login/')
 def checkNumPedido(request):
@@ -147,7 +184,6 @@ def resumenReserva(request, numPedido, idHueco):
         hueco.save()
         
         reserva = Reserva.objects.create(pedido = pedido, disponibilidad_reserva = hueco)
-        reserva.save()
 
         
     else:
@@ -246,7 +282,6 @@ def guardarReserva(request, numPedido, idHueco):
     hueco.estado = "RESERVADO"
     hueco.save()
     reserva = Reserva.objects.create(pedido = pedido, disponibilidad_reserva = hueco)
-    reserva.save()
     doc = docHtml.render({'user' : request.user})
     return HttpResponse(doc)
 
@@ -295,18 +330,17 @@ def gestionPedidos(request):
             listaPedidos.append(filaPedido)
         Pedido.objects.all().delete()
         for pedido in listaPedidos:
-            vehiculo = Vehiculo.objects.filter(matricula = pedido[3])
+            vehiculo = Vehiculo.objects.filter(matricula = pedido[2])
             if(len(vehiculo) == 0):
                 tipo_vehiculo = TipoVehiculo.objects.filter(nombre = pedido[2].upper())[0]
 
-                vehiculo = Vehiculo.objects.update(tipo_vehiculo = tipo_vehiculo, matricula = pedido[3])
+                vehiculo = Vehiculo.objects.create(tipo_vehiculo = tipo_vehiculo, matricula = pedido[2])
                 
             else:
                 vehiculo = vehiculo[0]
             pedido_historico = PedidoCompletado.objects.filter(numero_pedido = pedido[0])
             if(len(Pedido.objects.filter(numero_pedido = pedido[0])) == 0 and len(pedido_historico) == 0):
-                pedido_creado = Pedido.objects.create(operacion = pedido[1].upper(), numero_pedido = pedido[0], vehiculo = vehiculo)
-                pedido_creado.save()
+                pedido_creado = Pedido.objects.create(operacion = pedido[1].upper(), numero_pedido = pedido[0],vehiculo = vehiculo,nombre=pedido[3],direccion=pedido[4],peso=pedido[2])
         
       
 
@@ -378,21 +412,20 @@ def gestionConfiguracion(request, dia):
                         usuario = usuario,
                         vehiculo = vehiculo,
                         resultado = "AUSENTE"
-                        )
-                    pedido_completado.save()    
+                        )  
                     pedido.delete()
                 hueco.delete()
 
         for configuracion in listaConfiguracion:
             hora_inicio = fecha_configuracion
-            hora_inicio.save()
+
             vehiculo = Vehiculo.objects.filter(matricula = configuracion[0])
             if(len(vehiculo) == 0):
                 vehiculo = Vehiculo.objects.update_or_create(matricula = configuracion[0], estado = "LIBRE")              
             else:
                 vehiculo = vehiculo[0]
             
-            tipo_vehiculo = TipoVehiculo.objects.get(matricula = configuracion[1])
+            tipo_vehiculo = TipoVehiculo.objects.get(nombre = configuracion[1])
             tiempo_carga = datetime.timedelta(minutes = tipo_vehiculo.tiempo_carga)
             tiempo_descarga = datetime.timedelta(minutes = tipo_vehiculo.tiempo_descarga)
             i = 2
@@ -401,7 +434,6 @@ def gestionConfiguracion(request, dia):
             while(i < 10):
                 operacion = configuracion[i].upper()
                 configuracion_nueva = ConfiguracionVehiculo.objects.create(operacion = operacion, fecha = fecha_inicio, vehiculo = vehiculo, tipo_vehiculo = tipo_vehiculo)
-                configuracion_nueva.save()
                 fecha_inicio = fecha_inicio + datetime.timedelta(hours = 1)
                 i+=1
             i = 2
@@ -419,7 +451,6 @@ def gestionConfiguracion(request, dia):
                     while(fecha_inicio + tiempo_operacion <= fecha_siguiente_configuracion):
                         fecha_fin = fecha_inicio + tiempo_operacion
                         disponibilidad_nueva = DisponibilidadReserva.objects.create(operacion = operacion, fecha_inicio = fecha_inicio, fecha_fin = fecha_fin, estado = "LIBRE", vehiculo = vehiculo, tipo_vehiculo = tipo_vehiculo)
-                        disponibilidad_nueva.save()
                         fecha_inicio = fecha_fin
 
                         if(fecha_inicio + tiempo_operacion > fecha_siguiente_configuracion and i+1 < 10):
@@ -568,7 +599,7 @@ def checkSimulacion(request, io, mtr, dia, hora):
                 tipo_vehiculo = TipoVehiculo.objects.get(id = vehiculo.tipo_vehiculo.id)
                 if hueco_reserva.estado == "EJECUCION":
                     pedido = Pedido.objects.get(numero_pedido = reserva.pedido.numero_pedido)
-                    vehiculo = Vehiculo.objects.get(id = hueco_reserva.vehiculo.matricula)
+                    vehiculo = Vehiculo.objects.get(matricula = hueco_reserva.vehiculo.matricula)
                     usuario = Usuario.objects.get(user = vehiculo.usuario)
                     vehiculo.estado = "LIBRE"
                     vehiculo.save()
@@ -581,7 +612,6 @@ def checkSimulacion(request, io, mtr, dia, hora):
                         vehiculo = vehiculo,
                         resultado = "COMPLETADO"
                     )
-                    pedido_completado.save()
                     reserva_sim = [pedido.numero_pedido, vehiculo.matricula, pedido.operacion, tipo_vehiculo.nombre, vehiculo.matricula, fecha.date, hueco_reserva.fecha_inicio.time, fecha.time]
                     pedido.delete()
                     reserva.delete()
@@ -594,7 +624,7 @@ def checkSimulacion(request, io, mtr, dia, hora):
             for reserva in reservas:
                 hueco_reserva = DisponibilidadReserva.objects.get(id = reserva.disponibilidad_reserva.id)
                 pedido = Pedido.objects.get(numero_pedido = reserva.pedido.numero_pedido)
-                vehiculo = Vehiculo.objects.get(id = hueco_reserva.vehiculo.matricula)
+                vehiculo = Vehiculo.objects.get(matricula = hueco_reserva.vehiculo.matricula)
                 usuario = Usuario.objects.get(user = vehiculo.usuario)
                 tipo_vehiculo = TipoVehiculo.objects.get(id = vehiculo.tipo_vehiculo.id)
                 fecha_inicio = hueco_reserva.fecha_inicio
@@ -631,7 +661,6 @@ def checkSimulacion(request, io, mtr, dia, hora):
                     pedido.delete()
                     reserva.delete()
                     hueco_reserva.delete()
-                    pedido_completado.save()
              
                     caso = 2
 

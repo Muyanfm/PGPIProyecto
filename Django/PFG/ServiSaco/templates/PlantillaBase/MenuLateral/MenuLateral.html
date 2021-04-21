@@ -35,7 +35,9 @@
                 <button id="gestionConf" class="botonPantallaPrincipal" type="button" value="Gestión de configuración">Gestión de configuración</button>
             </a>
         </div>
-        
+        {% endif %}
+
+        {% if user.usuario.rol.nombre == 'Developer' %}
         <div>
             <i class="fas fa-list-ul"></i>
             <a href="{% url 'gestionPedidos' %}">

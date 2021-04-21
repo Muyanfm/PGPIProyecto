@@ -3,7 +3,7 @@ $(document).ready(function(){
     if (caso == 1){
         setTimeout(function(){
             $("#InfoReserva h3").text("Cerrando barrera");
-            $("#AnimacionBarrera").attr("src", "/static/Simulacion/CheckSimulacion/media/barreraClose.gif");
+            $("#AnimacionBarrera").attr("src", "/static/Simulacion/CheckSimulacion/media/camioncamino.gif");
         }, 6000);
 
         setTimeout(function(){
@@ -22,7 +22,7 @@ $(document).ready(function(){
 
         setTimeout(function(){
             $("#InfoReserva h3").text("Cerrando barrera");
-            $("#AnimacionBarrera").attr("src", "/static/Simulacion/CheckSimulacion/media/barreraClose.gif");
+            $("#AnimacionBarrera").attr("src", "/static/Simulacion/CheckSimulacion/media/camioncamino.gif");
         }, 6000);
     
         setTimeout(function(){

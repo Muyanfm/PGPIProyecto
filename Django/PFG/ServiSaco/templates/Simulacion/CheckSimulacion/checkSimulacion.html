@@ -23,21 +23,20 @@
 
         <div id="InfoReserva">
             <h2>Bienvenido</h2>
-            <h3>Abriendo barrera para entrada</h3>
+            <h3>Vehículo en camino</h3>
             <br>
             <p id="HoraSistema">Hora Actual: <span>{{ horaActual }}</span></p>
             <p id="IdReserva">ID Reserva: <span>{{ reserva.0 }}</span></p>
             <p id="Vehiculo">Vehiculo: <span>{{ reserva.1 }}</span></p>
             <p id="TipoOperacion">Tipo de Operación: <span>{{ reserva.2 }}</span></p>
             <p id="TipoVehículo">Tipo de Vehículo: <span>{{ reserva.3 }}</span></p>
-            <p id="Matricula">Matrícula: <span>{{ reserva.4 }}</span></p>
             <p id="Dia">Día: <span>{{ reserva.5 }}</span></p>
             <p id="HoraEntrada">Hora de Entrada: <span>{{ reserva.6 }}</span></p>
             <p id="HoraSalida">Hora de Salida: <span>{{ reserva.7 }}</span></p>
 
         </div>
 
-        <img id="AnimacionBarrera" src="{% static 'Simulacion/CheckSimulacion/media/barreraOpen.gif' %}" alt="No se encuentra la imagen" draggable="false">
+        <img id="AnimacionBarrera" src="{% static 'Simulacion/CheckSimulacion/media/camioncamino.gif' %}" alt="No se encuentra la imagen" draggable="false">
 
     {% elif caso is 2 %}
 
@@ -50,7 +49,6 @@
             <p id="Vehiculo">Vehiculo: <span>{{ reserva.1 }}</span></p>
             <p id="TipoOperacion">Tipo de Operación: <span>{{ reserva.2 }}</span></p>
             <p id="TipoVehículo">Tipo de Vehículo: <span>{{ reserva.3 }}</span></p>
-            <p id="Matricula">Matrícula: <span>{{ reserva.4 }}</span></p>
             <p id="Dia">Día: <span>{{ reserva.5 }}</span></p>
             <p id="HoraEntrada">Hora de Entrada: <span>{{ reserva.6 }}</span></p>
             <p id="HoraSalida">Hora de Salida: <span>{{ reserva.7 }}</span></p>
@@ -86,7 +84,6 @@
             <p id="Vehiculo">Vehiculo: <span>{{ reserva.1 }}</span></p>
             <p id="TipoOperacion">Tipo de Operación: <span>{{ reserva.2 }}</span></p>
             <p id="TipoVehículo">Tipo de Vehículo: <span>{{ reserva.3 }}</span></p>
-            <p id="Matricula">Matrícula: <span>{{ reserva.4 }}</span></p>
             <p id="Dia">Día: <span>{{ reserva.5 }}</span></p>
             <p id="HoraEntrada">Hora de Entrada: <span>{{ reserva.6 }}</span></p>
             <p id="HoraSalida">Hora de Salida: <span>{{ reserva.7 }}</span></p>
@@ -138,21 +135,20 @@
     {% elif caso is 0 %}
 
         <div id="InfoReserva">
-            <h2>Esperamos volver a verle pronto</h2>
-            <h3>Abriendo barrera para Salida</h3>
+            <h2></h2>
+            <h3>Saliendo del lugar</h3>
             <br>
             <p id="IdReserva">ID Reserva: <span>{{ reserva.0 }}</span></p>
             <p id="Vehiculo">Vehiculo: <span>{{ reserva.1 }}</span></p>
             <p id="TipoOperacion">Tipo de Operación: <span>{{ reserva.2 }}</span></p>
             <p id="TipoVehículo">Tipo de Vehículo: <span>{{ reserva.3 }}</span></p>
-            <p id="Matricula">Matrícula: <span>{{ reserva.4 }}</span></p>
             <p id="Dia">Día: <span>{{ reserva.5 }}</span></p>
             <p id="HoraEntrada">Hora de Entrada: <span>{{ reserva.6 }}</span></p>
             <p id="HoraSalida">Hora de Salida: <span>{{ reserva.7 }}</span></p>
 
         </div>
 
-        <img id="AnimacionBarrera" src="{% static 'Simulacion/CheckSimulacion/media/barreraOpen.gif' %}" alt="No se encuentra la imagen" draggable="false">
+        <img id="AnimacionBarrera" src="{% static 'Simulacion/CheckSimulacion/media/camioncamino.gif' %}" alt="No se encuentra la imagen" draggable="false">
 
     {% endif %}
 

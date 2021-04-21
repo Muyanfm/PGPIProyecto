@@ -38,7 +38,7 @@ function crearTabla(){
                         </select>";
     for (let i = 0; i < cantidadVehiculo; i++) {
         var tr = "<tr><td>"+(i+1)+"</td>";
-        tr += "<td>"+cbTipoVehiculo+"</td>";
+        tr += "<td>"+cbTipoAccion+"</td>";
         for (let j = 0; j < horaFin-horaInicio; j++) {
             tr += "<td>"+cbTipoAccion+"</td>";
         }
